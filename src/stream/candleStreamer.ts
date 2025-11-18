@@ -11,7 +11,7 @@ import { info, warn, error as logError } from "../utils/logger.js";
 const HYPERLIQUID_WS_URL = "wss://api.hyperliquid.xyz/ws";
 const CANDLE_INTERVAL = "1h";
 const MAX_CANDLES_STORED = 60; // Keep last 60 candles (60 hours of data)
-const MAX_ACTIVE_SUBSCRIPTIONS = 190; // Tested: Connection closes after ~18 subscriptions, so keep it at 15 for safety
+// Hyperliquid allows 1000 subscriptions per connection, so we can subscribe to all coins
 
 export interface HyperliquidCandle {
   t: number; // Open time (ms)
@@ -47,17 +47,13 @@ class CandleStreamer {
   private allAvailableCoins: string[] = []; // Full list of coins to monitor
   private subscriptionQueue: string[] = [];
   private isSubscribing = false;
-  private readonly BATCH_SUBSCRIBE_DELAY = 150; // ms between subscriptions (slower to avoid connection drops)
+  private readonly BATCH_SUBSCRIBE_DELAY = 200; // ms between subscriptions (5/sec, well under 2000 msg/min limit)
   private reconnectAttempts = 0;
   private readonly MAX_RECONNECT_ATTEMPTS = 5;
   private reconnectTimer: NodeJS.Timeout | null = null;
-  private onCandleCallback: ((coin: string, candle: ProcessedCandle) => void) | null = null;
-  private candlesReceivedThisHour: Set<string> = new Set();
-  private detectionTriggerTimer: NodeJS.Timeout | null = null;
   private restApiQueue: string[] = [];
   private isProcessingRestApi = false;
   private readonly REST_API_DELAY = 100; // ms between REST API calls to avoid rate limiting
-  private rotationTimer: NodeJS.Timeout | null = null;
 
   async connect(): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -205,69 +201,35 @@ class CandleStreamer {
   }
 
   /**
-   * Set the list of all available coins (for rotation)
+   * Set the list of all available coins and subscribe to all of them
    */
   setAvailableCoins(coins: string[]): void {
     this.allAvailableCoins = coins;
     info("CandleStreamer", `Updated available coins list: ${coins.length} total coins`);
     
-    // Subscribe to first batch immediately
+    // Subscribe to ALL coins (Hyperliquid supports 1000 subscriptions per connection)
     if (this.activeCoins.size === 0) {
-      info("CandleStreamer", `Initial subscription - will subscribe to ${Math.min(MAX_ACTIVE_SUBSCRIPTIONS, coins.length)} coins`);
-      this.rotateSubscriptions();
+      info("CandleStreamer", `Initial subscription - will subscribe to all ${coins.length} coins`);
+      this.subscribeToAllCoins();
     }
-    
-    // Start rotation timer (rotate every hour to monitor different coins)
-    if (this.rotationTimer) {
-      clearInterval(this.rotationTimer);
-    }
-    this.rotationTimer = setInterval(() => {
-      info("CandleStreamer", "Hourly rotation timer triggered");
-      this.rotateSubscriptions();
-    }, 60 * 60 * 1000); // Rotate every hour
   }
 
   /**
-   * Rotate subscriptions to monitor different coins
+   * Subscribe to all available coins
    */
-  private async rotateSubscriptions(): Promise<void> {
+  private async subscribeToAllCoins(): Promise<void> {
     if (this.allAvailableCoins.length === 0) {
       info("CandleStreamer", "No coins available for subscription");
       return;
     }
 
-    const coinsToSubscribe = this.selectCoinsForSubscription();
-    info("CandleStreamer", `Rotating subscriptions: ${coinsToSubscribe.length} coins selected from ${this.allAvailableCoins.length} available`);
-    info("CandleStreamer", `First few coins: ${coinsToSubscribe.slice(0, 5).join(", ")}...`);
+    info("CandleStreamer", `Subscribing to all ${this.allAvailableCoins.length} coins...`);
+    console.log(`\n📡 Subscribing to ${this.allAvailableCoins.length} coins (rate limited to avoid API throttling)...`);
     
-    // Unsubscribe from coins not in the new list
-    const coinsToUnsubscribe = Array.from(this.activeCoins).filter(coin => !coinsToSubscribe.includes(coin));
-    if (coinsToUnsubscribe.length > 0) {
-      info("CandleStreamer", `Unsubscribing from ${coinsToUnsubscribe.length} coins`);
-      for (const coin of coinsToUnsubscribe) {
-        await this.unsubscribe(coin);
-      }
+    // Subscribe to all coins
+    for (const coin of this.allAvailableCoins) {
+      await this.subscribe(coin);
     }
-
-    // Subscribe to new coins
-    const coinsToAdd = coinsToSubscribe.filter(coin => !this.activeCoins.has(coin));
-    if (coinsToAdd.length > 0) {
-      info("CandleStreamer", `Adding ${coinsToAdd.length} new coin subscriptions`);
-      for (const coin of coinsToAdd) {
-        await this.subscribe(coin);
-      }
-    } else {
-      info("CandleStreamer", "All selected coins already subscribed");
-    }
-  }
-
-  /**
-   * Select which coins to subscribe to (prioritize by volume/activity)
-   */
-  private selectCoinsForSubscription(): string[] {
-    // For now, just take the first MAX_ACTIVE_SUBSCRIPTIONS coins
-    // TODO: Could prioritize by volume, market cap, or recent activity
-    return this.allAvailableCoins.slice(0, MAX_ACTIVE_SUBSCRIPTIONS);
   }
 
   /**
@@ -290,7 +252,7 @@ class CandleStreamer {
     }
 
     this.isSubscribing = true;
-    console.log(`\n📡 Subscribing to ${this.subscriptionQueue.length} coins (max: ${MAX_ACTIVE_SUBSCRIPTIONS})...`);
+    console.log(`\n📡 Processing ${this.subscriptionQueue.length} subscription requests...`);
     info("CandleStreamer", `Processing subscription queue (${this.subscriptionQueue.length} coins)`);
 
     while (this.subscriptionQueue.length > 0) {
@@ -453,29 +415,6 @@ class CandleStreamer {
           "CandleStreamer",
           `[1H] 📊 Live update ${coin} @ ${timeStr}: close=${processed.close.toFixed(4)} vol=${processed.volume.toFixed(0)} trades=${processed.numTrades}`
         );
-
-        // Only trigger detection for COMPLETED candles (not real-time updates)
-        if (isCompletedCandle) {
-          // Track that we received a candle this hour
-          this.candlesReceivedThisHour.add(coin);
-
-          // Call the callback if registered (only for completed candles)
-          if (this.onCandleCallback) {
-            this.onCandleCallback(coin, processed);
-          }
-
-          // Schedule batch detection after a short delay (to collect all coins' candles)
-          if (this.detectionTriggerTimer) {
-            clearTimeout(this.detectionTriggerTimer);
-          }
-          
-          this.detectionTriggerTimer = setTimeout(() => {
-            const coinsReceived = Array.from(this.candlesReceivedThisHour);
-            console.log(`\n🔍 Triggering detection for ${coinsReceived.length} coins with completed candles\n`);
-            info("CandleStreamer", `Received ${coinsReceived.length} completed candles, triggering detection`);
-            this.candlesReceivedThisHour.clear();
-          }, 10000); // Wait 10 seconds for all completed candles to arrive
-        }
       }
 
     } catch (err) {
@@ -509,27 +448,12 @@ class CandleStreamer {
   }
 
   /**
-   * Register callback to be called when a new candle arrives
-   */
-  onCandle(callback: (coin: string, candle: ProcessedCandle) => void): void {
-    this.onCandleCallback = callback;
-  }
-
-  /**
    * Close WebSocket connection
    */
   close(): void {
-    if (this.detectionTriggerTimer) {
-      clearTimeout(this.detectionTriggerTimer);
-      this.detectionTriggerTimer = null;
-    }
     if (this.reconnectTimer) {
       clearTimeout(this.reconnectTimer);
       this.reconnectTimer = null;
-    }
-    if (this.rotationTimer) {
-      clearInterval(this.rotationTimer);
-      this.rotationTimer = null;
     }
 
     if (this.ws) {

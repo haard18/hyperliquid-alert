@@ -10,9 +10,6 @@ import { initTelegram, isTelegramEnabled } from "./utils/telegramNotifier.js";
 
 let activatedCoins: string[] = [];
 
-let candlesReceivedThisHour: Set<string> = new Set();
-let detectionTimer: NodeJS.Timeout | null = null;
-
 /**
  * Initialize WebSocket and subscribe to all discovered coins
  */
@@ -20,25 +17,6 @@ async function initializeStreaming(): Promise<void> {
   try {
     info("Main", "Initializing WebSocket streaming (1h candles)...");
     await candleStreamer.connect();
-    
-    // Register callback for when live candles arrive
-    candleStreamer.onCandle((coin, candle) => {
-      const candleTime = new Date(candle.timestamp).toLocaleTimeString();
-      console.log(`[${candleTime}] 📊 Live candle received: ${coin}`);
-      candlesReceivedThisHour.add(coin);
-      
-      // Schedule batch detection after brief delay to collect all candles
-      if (detectionTimer) {
-        clearTimeout(detectionTimer);
-      }
-      
-      detectionTimer = setTimeout(async () => {
-        info("Main", `🔍 Triggering detection for ${candlesReceivedThisHour.size} coins with new candles`);
-        await runBreakoutDetection();
-        candlesReceivedThisHour.clear();
-      }, 10000); // Wait 10 seconds for all candles to arrive
-    });
-    
     info("Main", "Candle WebSocket connected");
   } catch (err) {
     error("Main", "Failed to initialize streaming", err);
@@ -181,6 +159,14 @@ async function start(): Promise<void> {
     console.log(`📊 WebSocket subscriptions active - will receive candles automatically`);
     console.log(`🔍 Detection will run automatically when new hourly candles arrive\n`);
 
+    // Schedule breakout detection at 1 minute past each hour (after hourly candles arrive)
+    cron.schedule("1 * * * *", async () => {
+      if (activatedCoins.length > 0) {
+        info("Main", "Running scheduled hourly breakout detection...");
+        await runBreakoutDetection();
+      }
+    });
+
     // Schedule market discovery every 5 minutes
     cron.schedule("*/5 * * * *", async () => {
       info("Main", "Running scheduled market discovery...");
@@ -239,10 +225,6 @@ async function start(): Promise<void> {
  */
 async function shutdown(): Promise<void> {
   console.log("\nShutting down Hyperliquid Breakout Detector...");
-  
-  if (detectionTimer) {
-    clearTimeout(detectionTimer);
-  }
   
   candleStreamer.close();
   await redis.quit();
