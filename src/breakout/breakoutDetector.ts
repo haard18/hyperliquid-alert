@@ -190,12 +190,14 @@ export async function detectBreakoutForCoin(coin: string): Promise<BreakoutSigna
     const candles = await candleStreamer.getCandles(coin, 60);
     
     if (candles.length < 24) {
+      info("BreakoutDetector", `${coin}: Insufficient data (${candles.length} candles, need 24+)`);
       return null; // Not enough data
     }
 
     const latestCandle = candles[0];
     
     if (!latestCandle) {
+      warn("BreakoutDetector", `${coin}: No latest candle available`);
       return null; // No latest candle
     }
     
@@ -205,8 +207,16 @@ export async function detectBreakoutForCoin(coin: string): Promise<BreakoutSigna
     const consolidationPeriod = detectConsolidation(candles);
     const sustainedMomentum = checkSustainedMomentum(candles);
 
+    info(
+      "BreakoutDetector",
+      `${coin}: price=${latestCandle.close.toFixed(4)} resistance=${resistanceLevel.toFixed(4)} ` +
+      `vol=${latestCandle.volume.toFixed(0)} avgVol=${avgVolume.toFixed(0)} ` +
+      `consolidation=${consolidationPeriod}h momentum=${sustainedMomentum}`
+    );
+
     // Check if price broke above resistance
     if (latestCandle.close <= resistanceLevel) {
+      info("BreakoutDetector", `${coin}: No breakout (price below resistance)`);
       return null; // No breakout
     }
 
@@ -214,8 +224,14 @@ export async function detectBreakoutForCoin(coin: string): Promise<BreakoutSigna
     const volumeRatio = avgVolume > 0 ? latestCandle.volume / avgVolume : 0;
     const priceChange = ((latestCandle.close - resistanceLevel) / resistanceLevel) * 100;
 
+    info(
+      "BreakoutDetector",
+      `${coin}: PRICE BREAKOUT! volRatio=${volumeRatio.toFixed(2)}x priceChange=+${priceChange.toFixed(2)}%`
+    );
+
     // Require minimum volume surge and price breakout
     if (volumeRatio < 1.5 || priceChange < 1) {
+      info("BreakoutDetector", `${coin}: Breakout too weak (volRatio < 1.5x or priceChange < 1%)`);
       return null; // Not strong enough
     }
 
@@ -237,8 +253,14 @@ export async function detectBreakoutForCoin(coin: string): Promise<BreakoutSigna
       breakoutType = "weak";
     }
 
+    info(
+      "BreakoutDetector",
+      `${coin}: Confidence score = ${confidenceScore}/100 (${breakoutType})`
+    );
+
     // Only return high-confidence breakouts (50+)
     if (confidenceScore < 50) {
+      info("BreakoutDetector", `${coin}: Confidence too low (< 50), skipping`);
       return null;
     }
 
