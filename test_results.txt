@@ -1,0 +1,36 @@
+======================================================================
+HYPERLIQUID WEBSOCKET SUBSCRIPTION TEST
+======================================================================
+Testing with 184 coins
+Rate limit: 2000 messages/minute (official limit)
+Our rate: 100ms delay = 10/sec = 600/min
+Expected completion time: 18.4 seconds
+======================================================================
+
+Test will run for 40 seconds...
+
+✓ WebSocket connected
+⏳ Subscribing to 184 coins...
+
+  📊 [Candle #1] BTC: $91370.0 (vol: 1545)
+
+======================================================================
+FINAL RESULTS
+======================================================================
+  Total time: 1.6 seconds
+  Subscription requests sent: 13/184
+  Subscriptions confirmed: 11/13
+  Success rate: 84.6%
+  Errors received: 0
+  Candle updates received: 1
+  Average confirmation time: 0.15s per coin
+
+  ⚠️  GOOD: Most subscriptions successful, but some failed
+
+  First 20 confirmed coins:
+  BTC, ETH, SOL, ATOM, BNB, ARB, OP, MATIC, AVAX, DOGE, WIF
+
+  Unconfirmed coins (172):
+  BONK, PEPE, SHIB, FLOKI, LINK, UNI, AAVE, CRV, LDO, FTM, ALGO, XLM, ADA, DOT, NEAR, APT, SUI, SEI, TIA, INJ...
+======================================================================
+
