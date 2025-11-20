@@ -48,12 +48,14 @@ function printResults(
     console.log("\n🏆 TOP 20 BREAKOUTS");
     console.log("─".repeat(80));
     topPerformers.forEach((b, i) => {
-      const date = new Date(b.signal.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      const timestamp = new Date(b.signal.timestamp);
+      const dateStr = timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const timeStr = timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
       console.log(
         `  ${(i + 1).toString().padStart(2)}. ${b.signal.coin.padEnd(8)} ` +
         `+${b.outcome.gain24h.toFixed(1).padStart(5)}%  ` +
         `Conf: ${b.signal.confidenceScore}/100  ` +
-        `${date}`
+        `${dateStr} ${timeStr}`
       );
     });
   }

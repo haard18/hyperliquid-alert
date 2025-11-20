@@ -123,21 +123,21 @@ export async function notifyAllBreakouts(breakouts: Array<{
 
     let message = `📋 *ALL BREAKOUTS (${start + 1}-${end} of ${breakouts.length})*\n\n`;
     message += `\`\`\`\n`;
-    message += `Coin     Date      Price    Vol  Chg  Conf Type 24h\n`;
-    message += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+    message += `Coin     Date          Time     Price  Vol Conf 24h\n`;
+    message += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
 
     batch.forEach(b => {
+      const timestamp = new Date(b.timestamp);
       const coin = b.coin.padEnd(8);
-      const date = new Date(b.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).padEnd(9);
-      const price = `$${b.price.toFixed(2)}`.padEnd(8);
-      const vol = `${b.volumeRatio.toFixed(1)}x`.padEnd(5);
-      const chg = `${b.priceChange.toFixed(0)}%`.padStart(3);
+      const date = timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).padEnd(9);
+      const time = timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }).padEnd(8);
+      const price = `$${b.price.toFixed(2)}`.padEnd(6);
+      const vol = `${b.volumeRatio.toFixed(1)}x`.padEnd(4);
       const conf = b.confidenceScore.toString().padStart(3);
-      const type = b.breakoutType === 'strong' ? 'S' : b.breakoutType === 'moderate' ? 'M' : 'W';
-      const gain = `${b.outcome.gain24h >= 0 ? '+' : ''}${b.outcome.gain24h.toFixed(0)}%`;
+      const gain = `${b.outcome.gain24h >= 0 ? '+' : ''}${b.outcome.gain24h.toFixed(0)}%`.padEnd(5);
       const status = b.outcome.success ? '✓' : '✗';
       
-      message += `${coin} ${date} ${price} ${vol} ${chg} ${conf} ${type}   ${gain} ${status}\n`;
+      message += `${coin} ${date} ${time} ${price} ${vol} ${conf}  ${gain} ${status}\n`;
     });
 
     message += `\`\`\``;
@@ -216,8 +216,10 @@ export async function notifyBacktestResults(stats: {
     let topMessage = `🏆 *TOP ${topCount} BREAKOUTS*\n\n`;
     
     stats.topPerformers.slice(0, topCount).forEach((p, i) => {
-      const date = new Date(p.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      topMessage += `${i + 1}. ${p.coin} +${p.gain.toFixed(1)}% (${p.confidence}/100) ${date}\n`;
+      const timestamp = new Date(p.timestamp);
+      const dateStr = timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const timeStr = timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+      topMessage += `${i + 1}. ${p.coin} +${p.gain.toFixed(1)}% (${p.confidence}/100) ${dateStr} ${timeStr}\n`;
     });
 
     await sendMessage(topMessage);
