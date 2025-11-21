@@ -1,0 +1,2610 @@
+{
+  "metadata": {
+    "coins": 184,
+    "months": 3,
+    "totalCombinations": 100,
+    "timestamp": "2025-11-20T20:59:07.090Z"
+  },
+  "results": [
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 1971,
+        "successfulBreakouts": 1437,
+        "successRate": 72.90715372907154,
+        "avgGain1h": 2.718676349192169,
+        "avgGain4h": 4.616462380871476,
+        "avgGain12h": 6.991312260358831,
+        "avgGain24h": 9.948861197028036,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 568,
+        "totalSignals": 381074
+      },
+      "score": 83.29701209471564
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 2335,
+        "successfulBreakouts": 1631,
+        "successRate": 69.85010706638116,
+        "avgGain1h": 2.4473348177147187,
+        "avgGain4h": 4.19248170007332,
+        "avgGain12h": 6.384589528858361,
+        "avgGain24h": 9.062364662091598,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 783,
+        "totalSignals": 381074
+      },
+      "score": 79.35813403510397
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 2547,
+        "successfulBreakouts": 1780,
+        "successRate": 69.88614055751864,
+        "avgGain1h": 2.401986704650884,
+        "avgGain4h": 4.157740965028209,
+        "avgGain12h": 6.339978423741555,
+        "avgGain24h": 8.915959596142883,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 844,
+        "totalSignals": 381074
+      },
+      "score": 79.15897062534427
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 2657,
+        "successfulBreakouts": 1859,
+        "successRate": 69.96612721114039,
+        "avgGain1h": 2.3805303512787734,
+        "avgGain4h": 4.1197355681022625,
+        "avgGain12h": 6.303674981230274,
+        "avgGain24h": 8.857617712759264,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 877,
+        "totalSignals": 381074
+      },
+      "score": 79.10025612555617
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 2510,
+        "successfulBreakouts": 1726,
+        "successRate": 68.76494023904382,
+        "avgGain1h": 2.3405666222600066,
+        "avgGain4h": 4.040459924892003,
+        "avgGain12h": 6.1508522065674,
+        "avgGain24h": 8.704528820059389,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 958,
+        "totalSignals": 381074
+      },
+      "score": 77.28156760027814
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 2744,
+        "successfulBreakouts": 1889,
+        "successRate": 68.84110787172013,
+        "avgGain1h": 2.2981842612732097,
+        "avgGain4h": 4.004815501595404,
+        "avgGain12h": 6.125011437108277,
+        "avgGain24h": 8.589027862772456,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 1041,
+        "totalSignals": 381074
+      },
+      "score": 77.12703531738164
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 2868,
+        "successfulBreakouts": 1979,
+        "successRate": 69.00278940027894,
+        "avgGain1h": 2.2741597655385006,
+        "avgGain4h": 3.9655523962574986,
+        "avgGain12h": 6.089669002220819,
+        "avgGain24h": 8.541021992162083,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 1088,
+        "totalSignals": 381074
+      },
+      "score": 77.09599098571887
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 3057,
+        "successfulBreakouts": 2200,
+        "successRate": 71.96597971867844,
+        "avgGain1h": 2.446221472121378,
+        "avgGain4h": 4.1872788709222935,
+        "avgGain12h": 6.397577622284479,
+        "avgGain24h": 9.00529645674222,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 1509,
+        "totalSignals": 381074
+      },
+      "score": 76.92456085591165
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 3167,
+        "successfulBreakouts": 2283,
+        "successRate": 72.08714872118725,
+        "avgGain1h": 2.4256814828063904,
+        "avgGain4h": 4.161762603487437,
+        "avgGain12h": 6.344994901914003,
+        "avgGain24h": 8.920626850755948,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 1545,
+        "totalSignals": 381074
+      },
+      "score": 76.91924549184975
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 2911,
+        "successfulBreakouts": 2099,
+        "successRate": 72.1058055650979,
+        "avgGain1h": 2.4684281474205414,
+        "avgGain4h": 4.2172669787553545,
+        "avgGain12h": 6.435968958528748,
+        "avgGain24h": 9.071908384283308,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 1508,
+        "totalSignals": 381074
+      },
+      "score": 76.62543820449928
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 2335,
+        "successfulBreakouts": 1381,
+        "successRate": 59.143468950749465,
+        "avgGain1h": 2.4473348177147187,
+        "avgGain4h": 4.19248170007332,
+        "avgGain12h": 6.384589528858361,
+        "avgGain24h": 9.062364662091598,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 783,
+        "totalSignals": 381074
+      },
+      "score": 75.07547878885129
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 2547,
+        "successfulBreakouts": 1512,
+        "successRate": 59.36395759717315,
+        "avgGain1h": 2.401986704650884,
+        "avgGain4h": 4.157740965028209,
+        "avgGain12h": 6.339978423741555,
+        "avgGain24h": 8.915959596142883,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 844,
+        "totalSignals": 381074
+      },
+      "score": 74.95009744120607
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 2657,
+        "successfulBreakouts": 1578,
+        "successRate": 59.39028980052691,
+        "avgGain1h": 2.3805303512787734,
+        "avgGain4h": 4.1197355681022625,
+        "avgGain12h": 6.303674981230274,
+        "avgGain24h": 8.857617712759264,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 877,
+        "totalSignals": 381074
+      },
+      "score": 74.86992116131077
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 3905,
+        "successfulBreakouts": 2789,
+        "successRate": 71.42125480153649,
+        "avgGain1h": 2.3359164708590208,
+        "avgGain4h": 4.125721313612398,
+        "avgGain12h": 6.261568045023636,
+        "avgGain24h": 8.724284387295278,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 2283,
+        "totalSignals": 381074
+      },
+      "score": 74.3243690306725
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 3811,
+        "successfulBreakouts": 2724,
+        "successRate": 71.47730254526371,
+        "avgGain1h": 2.34539767001518,
+        "avgGain4h": 4.142108105974926,
+        "avgGain12h": 6.29850948837623,
+        "avgGain24h": 8.764729371485844,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 2263,
+        "totalSignals": 381074
+      },
+      "score": 74.24423176842433
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 3707,
+        "successfulBreakouts": 2643,
+        "successRate": 71.29754518478553,
+        "avgGain1h": 2.3573267674672143,
+        "avgGain4h": 4.149836629271879,
+        "avgGain12h": 6.307333056961842,
+        "avgGain24h": 8.776207108636047,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 2304,
+        "totalSignals": 381074
+      },
+      "score": 73.64089546895809
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4358,
+        "successfulBreakouts": 3101,
+        "successRate": 71.15649380449747,
+        "avgGain1h": 2.267964720060281,
+        "avgGain4h": 4.040712145472375,
+        "avgGain12h": 6.23242643802628,
+        "avgGain24h": 8.628229427646074,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 2283,
+        "totalSignals": 381074
+      },
+      "score": 73.1628379282614
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 3057,
+        "successfulBreakouts": 1893,
+        "successRate": 61.9234543670265,
+        "avgGain1h": 2.446221472121378,
+        "avgGain4h": 4.1872788709222935,
+        "avgGain12h": 6.397577622284479,
+        "avgGain24h": 9.00529645674222,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 1509,
+        "totalSignals": 381074
+      },
+      "score": 72.90755071525088
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 3167,
+        "successfulBreakouts": 1962,
+        "successRate": 61.95137353962741,
+        "avgGain1h": 2.4256814828063904,
+        "avgGain4h": 4.161762603487437,
+        "avgGain12h": 6.344994901914003,
+        "avgGain24h": 8.920626850755948,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 1545,
+        "totalSignals": 381074
+      },
+      "score": 72.86493541922582
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 2510,
+        "successfulBreakouts": 1442,
+        "successRate": 57.450199203187246,
+        "avgGain1h": 2.3405666222600066,
+        "avgGain4h": 4.040459924892003,
+        "avgGain12h": 6.1508522065674,
+        "avgGain24h": 8.704528820059389,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 958,
+        "totalSignals": 381074
+      },
+      "score": 72.75567118593551
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4317,
+        "successfulBreakouts": 3068,
+        "successRate": 71.06787120685661,
+        "avgGain1h": 2.270871033668672,
+        "avgGain4h": 4.029610989611349,
+        "avgGain12h": 6.197040666444185,
+        "avgGain24h": 8.578368946776067,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 2263,
+        "totalSignals": 381074
+      },
+      "score": 72.75553335336218
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 2744,
+        "successfulBreakouts": 1585,
+        "successRate": 57.762390670553934,
+        "avgGain1h": 2.2981842612732097,
+        "avgGain4h": 4.004815501595404,
+        "avgGain12h": 6.125011437108277,
+        "avgGain24h": 8.589027862772456,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 1041,
+        "totalSignals": 381074
+      },
+      "score": 72.69554843691517
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 2868,
+        "successfulBreakouts": 1661,
+        "successRate": 57.91492329149233,
+        "avgGain1h": 2.2741597655385006,
+        "avgGain4h": 3.9655523962574986,
+        "avgGain12h": 6.089669002220819,
+        "avgGain24h": 8.541021992162083,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 1088,
+        "totalSignals": 381074
+      },
+      "score": 72.66084454220423
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 2911,
+        "successfulBreakouts": 1809,
+        "successRate": 62.143593266918586,
+        "avgGain1h": 2.4684281474205414,
+        "avgGain4h": 4.2172669787553545,
+        "avgGain12h": 6.435968958528748,
+        "avgGain24h": 9.071908384283308,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 1508,
+        "totalSignals": 381074
+      },
+      "score": 72.64055328522755
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 3870,
+        "successfulBreakouts": 2655,
+        "successRate": 68.6046511627907,
+        "avgGain1h": 2.1820114127246875,
+        "avgGain4h": 3.7660682192668924,
+        "avgGain12h": 5.78895368369907,
+        "avgGain24h": 8.128464106319687,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 2167,
+        "totalSignals": 381074
+      },
+      "score": 72.49982226948693
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4013,
+        "successfulBreakouts": 2758,
+        "successRate": 68.72663842511837,
+        "avgGain1h": 2.165794633156706,
+        "avgGain4h": 3.745077514244413,
+        "avgGain12h": 5.747946583996889,
+        "avgGain24h": 8.06124281941449,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 2233,
+        "totalSignals": 381074
+      },
+      "score": 72.48430971059574
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4251,
+        "successfulBreakouts": 3023,
+        "successRate": 71.11267936956011,
+        "avgGain1h": 2.2855712425310424,
+        "avgGain4h": 4.047756052784366,
+        "avgGain12h": 6.22262553276345,
+        "avgGain24h": 8.610430175210338,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 2304,
+        "totalSignals": 381074
+      },
+      "score": 72.26673191005371
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 3667,
+        "successfulBreakouts": 2515,
+        "successRate": 68.5846741205345,
+        "avgGain1h": 2.1943927174349995,
+        "avgGain4h": 3.782184872211335,
+        "avgGain12h": 5.791538227695161,
+        "avgGain24h": 8.1533479419904,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 2115,
+        "totalSignals": 381074
+      },
+      "score": 72.20525056082836
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 2335,
+        "successfulBreakouts": 1171,
+        "successRate": 50.149892933618844,
+        "avgGain1h": 2.4473348177147187,
+        "avgGain4h": 4.19248170007332,
+        "avgGain12h": 6.384589528858361,
+        "avgGain24h": 9.062364662091598,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 783,
+        "totalSignals": 381074
+      },
+      "score": 71.47804838199905
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 2547,
+        "successfulBreakouts": 1278,
+        "successRate": 50.17667844522968,
+        "avgGain1h": 2.401986704650884,
+        "avgGain4h": 4.157740965028209,
+        "avgGain12h": 6.339978423741555,
+        "avgGain24h": 8.915959596142883,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 844,
+        "totalSignals": 381074
+      },
+      "score": 71.27518578042869
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 2657,
+        "successfulBreakouts": 1329,
+        "successRate": 50.018818216033125,
+        "avgGain1h": 2.3805303512787734,
+        "avgGain4h": 4.1197355681022625,
+        "avgGain12h": 6.303674981230274,
+        "avgGain24h": 8.857617712759264,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 877,
+        "totalSignals": 381074
+      },
+      "score": 71.12133252751326
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 3905,
+        "successfulBreakouts": 2394,
+        "successRate": 61.306017925736235,
+        "avgGain1h": 2.3359164708590208,
+        "avgGain4h": 4.125721313612398,
+        "avgGain12h": 6.261568045023636,
+        "avgGain24h": 8.724284387295278,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 2283,
+        "totalSignals": 381074
+      },
+      "score": 70.2782742803524
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 3811,
+        "successfulBreakouts": 2335,
+        "successRate": 61.270007871949616,
+        "avgGain1h": 2.34539767001518,
+        "avgGain4h": 4.142108105974926,
+        "avgGain12h": 6.29850948837623,
+        "avgGain24h": 8.764729371485844,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 2263,
+        "totalSignals": 381074
+      },
+      "score": 70.16131389909869
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 3707,
+        "successfulBreakouts": 2266,
+        "successRate": 61.12759643916914,
+        "avgGain1h": 2.3573267674672143,
+        "avgGain4h": 4.149836629271879,
+        "avgGain12h": 6.307333056961842,
+        "avgGain24h": 8.776207108636047,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 2304,
+        "totalSignals": 381074
+      },
+      "score": 69.57291597071153
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4650,
+        "successfulBreakouts": 3100,
+        "successRate": 66.66666666666666,
+        "avgGain1h": 1.9816816774520511,
+        "avgGain4h": 3.47400387661025,
+        "avgGain12h": 5.3752369356818495,
+        "avgGain24h": 7.549403969247838,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 2870,
+        "totalSignals": 381074
+      },
+      "score": 69.42138858365696
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 5187,
+        "successfulBreakouts": 3512,
+        "successRate": 67.7077308656256,
+        "avgGain1h": 2.0374834617581206,
+        "avgGain4h": 3.6243484260103394,
+        "avgGain12h": 5.537496811005584,
+        "avgGain24h": 7.721990406991948,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 3407,
+        "totalSignals": 381074
+      },
+      "score": 69.39038528670416
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4492,
+        "successfulBreakouts": 2986,
+        "successRate": 66.47373107747106,
+        "avgGain1h": 1.9924676215610102,
+        "avgGain4h": 3.4852540264907406,
+        "avgGain12h": 5.3942127016020045,
+        "avgGain24h": 7.590607353513247,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 2789,
+        "totalSignals": 381074
+      },
+      "score": 69.35307579340227
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 5062,
+        "successfulBreakouts": 3422,
+        "successRate": 67.60173844330303,
+        "avgGain1h": 2.0391773466738403,
+        "avgGain4h": 3.6301198518046416,
+        "avgGain12h": 5.556916803649586,
+        "avgGain24h": 7.744246764677963,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 3359,
+        "totalSignals": 381074
+      },
+      "score": 69.25775469095213
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 2510,
+        "successfulBreakouts": 1215,
+        "successRate": 48.40637450199203,
+        "avgGain1h": 2.3405666222600066,
+        "avgGain4h": 4.040459924892003,
+        "avgGain12h": 6.1508522065674,
+        "avgGain24h": 8.704528820059389,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 958,
+        "totalSignals": 381074
+      },
+      "score": 69.13814130545742
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4358,
+        "successfulBreakouts": 2651,
+        "successRate": 60.83065626434144,
+        "avgGain1h": 2.267964720060281,
+        "avgGain4h": 4.040712145472375,
+        "avgGain12h": 6.23242643802628,
+        "avgGain24h": 8.628229427646074,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 2283,
+        "totalSignals": 381074
+      },
+      "score": 69.03250291219899
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4249,
+        "successfulBreakouts": 2818,
+        "successRate": 66.32148740880207,
+        "avgGain1h": 2.0004278346930464,
+        "avgGain4h": 3.493139367314472,
+        "avgGain12h": 5.382948789313074,
+        "avgGain24h": 7.584113010950634,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 2697,
+        "totalSignals": 381074
+      },
+      "score": 69.00206927913827
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 2744,
+        "successfulBreakouts": 1331,
+        "successRate": 48.505830903790084,
+        "avgGain1h": 2.2981842612732097,
+        "avgGain4h": 4.004815501595404,
+        "avgGain12h": 6.125011437108277,
+        "avgGain24h": 8.589027862772456,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 1041,
+        "totalSignals": 381074
+      },
+      "score": 68.99292453020963
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 3057,
+        "successfulBreakouts": 1593,
+        "successRate": 52.10991167811579,
+        "avgGain1h": 2.446221472121378,
+        "avgGain4h": 4.1872788709222935,
+        "avgGain12h": 6.397577622284479,
+        "avgGain24h": 9.00529645674222,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 1509,
+        "totalSignals": 381074
+      },
+      "score": 68.9821336396866
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 3167,
+        "successfulBreakouts": 1654,
+        "successRate": 52.22608146510893,
+        "avgGain1h": 2.4256814828063904,
+        "avgGain4h": 4.161762603487437,
+        "avgGain12h": 6.344994901914003,
+        "avgGain24h": 8.920626850755948,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 1545,
+        "totalSignals": 381074
+      },
+      "score": 68.97481858941843
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 4881,
+        "successfulBreakouts": 3296,
+        "successRate": 67.52714607662365,
+        "avgGain1h": 2.057546959759555,
+        "avgGain4h": 3.6464286177283305,
+        "avgGain12h": 5.585949015055591,
+        "avgGain24h": 7.78207620966591,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 3329,
+        "totalSignals": 381074
+      },
+      "score": 68.93436344166332
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 70,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 2868,
+        "successfulBreakouts": 1389,
+        "successRate": 48.43096234309623,
+        "avgGain1h": 2.2741597655385006,
+        "avgGain4h": 3.9655523962574986,
+        "avgGain12h": 6.089669002220819,
+        "avgGain24h": 8.541021992162083,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 1088,
+        "totalSignals": 381074
+      },
+      "score": 68.86726016284578
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 2911,
+        "successfulBreakouts": 1517,
+        "successRate": 52.112676056338024,
+        "avgGain1h": 2.4684281474205414,
+        "avgGain4h": 4.2172669787553545,
+        "avgGain12h": 6.435968958528748,
+        "avgGain24h": 9.071908384283308,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 1508,
+        "totalSignals": 381074
+      },
+      "score": 68.62818640099533
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4317,
+        "successfulBreakouts": 2619,
+        "successRate": 60.6671299513551,
+        "avgGain1h": 2.270871033668672,
+        "avgGain4h": 4.029610989611349,
+        "avgGain12h": 6.197040666444185,
+        "avgGain24h": 8.578368946776067,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 2263,
+        "totalSignals": 381074
+      },
+      "score": 68.59523685116159
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 3870,
+        "successfulBreakouts": 2240,
+        "successRate": 57.88113695090439,
+        "avgGain1h": 2.1820114127246875,
+        "avgGain4h": 3.7660682192668924,
+        "avgGain12h": 5.78895368369907,
+        "avgGain24h": 8.128464106319687,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 2167,
+        "totalSignals": 381074
+      },
+      "score": 68.2104165847324
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4013,
+        "successfulBreakouts": 2325,
+        "successRate": 57.93670570645403,
+        "avgGain1h": 2.165794633156706,
+        "avgGain4h": 3.745077514244413,
+        "avgGain12h": 5.747946583996889,
+        "avgGain24h": 8.06124281941449,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 2233,
+        "totalSignals": 381074
+      },
+      "score": 68.16833662313
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4251,
+        "successfulBreakouts": 2581,
+        "successRate": 60.715125852740535,
+        "avgGain1h": 2.2855712425310424,
+        "avgGain4h": 4.047756052784366,
+        "avgGain12h": 6.22262553276345,
+        "avgGain24h": 8.610430175210338,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 2304,
+        "totalSignals": 381074
+      },
+      "score": 68.10771050332588
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 5979,
+        "successfulBreakouts": 4035,
+        "successRate": 67.4862017059709,
+        "avgGain1h": 1.9577376792797734,
+        "avgGain4h": 3.51207058338245,
+        "avgGain12h": 5.450943514502606,
+        "avgGain24h": 7.555232472419228,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 3407,
+        "totalSignals": 381074
+      },
+      "score": 68.05911856584532
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 3667,
+        "successfulBreakouts": 2121,
+        "successRate": 57.840196345786744,
+        "avgGain1h": 2.1943927174349995,
+        "avgGain4h": 3.782184872211335,
+        "avgGain12h": 5.791538227695161,
+        "avgGain24h": 8.1533479419904,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 2115,
+        "totalSignals": 381074
+      },
+      "score": 67.90745945092925
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 5905,
+        "successfulBreakouts": 3970,
+        "successRate": 67.2311600338696,
+        "avgGain1h": 1.9590026673406014,
+        "avgGain4h": 3.5017985131235005,
+        "avgGain12h": 5.420964183833316,
+        "avgGain24h": 7.517090766814279,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 3359,
+        "totalSignals": 381074
+      },
+      "score": 67.69463877325599
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 5795,
+        "successfulBreakouts": 3888,
+        "successRate": 67.0923209663503,
+        "avgGain1h": 1.971206223490657,
+        "avgGain4h": 3.5162908926796854,
+        "avgGain12h": 5.428503559687816,
+        "avgGain24h": 7.529335777671483,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 3329,
+        "totalSignals": 381074
+      },
+      "score": 67.25194161573987
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 3905,
+        "successfulBreakouts": 2025,
+        "successRate": 51.85659411011524,
+        "avgGain1h": 2.3359164708590208,
+        "avgGain4h": 4.125721313612398,
+        "avgGain12h": 6.261568045023636,
+        "avgGain24h": 8.724284387295278,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 2283,
+        "totalSignals": 381074
+      },
+      "score": 66.498504754104
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 3811,
+        "successfulBreakouts": 1972,
+        "successRate": 51.744948832327474,
+        "avgGain1h": 2.34539767001518,
+        "avgGain4h": 4.142108105974926,
+        "avgGain12h": 6.29850948837623,
+        "avgGain24h": 8.764729371485844,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 2263,
+        "totalSignals": 381074
+      },
+      "score": 66.35129028324982
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 3707,
+        "successfulBreakouts": 1913,
+        "successRate": 51.60507148637713,
+        "avgGain1h": 2.3573267674672143,
+        "avgGain4h": 4.149836629271879,
+        "avgGain12h": 6.307333056961842,
+        "avgGain24h": 8.776207108636047,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 2304,
+        "totalSignals": 381074
+      },
+      "score": 65.76390598959473
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 6502,
+        "successfulBreakouts": 4242,
+        "successRate": 65.24146416487234,
+        "avgGain1h": 1.7988436656244031,
+        "avgGain4h": 3.2492671800609783,
+        "avgGain12h": 5.035238072164376,
+        "avgGain24h": 7.055902615126239,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 4722,
+        "totalSignals": 381074
+      },
+      "score": 65.68362928438967
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 6337,
+        "successfulBreakouts": 4123,
+        "successRate": 65.06233233391194,
+        "avgGain1h": 1.797993802575244,
+        "avgGain4h": 3.2500489970268447,
+        "avgGain12h": 5.036161062052688,
+        "avgGain24h": 7.06334668526134,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 4634,
+        "totalSignals": 381074
+      },
+      "score": 65.52640932444409
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4358,
+        "successfulBreakouts": 2245,
+        "successRate": 51.51445617255622,
+        "avgGain1h": 2.267964720060281,
+        "avgGain4h": 4.040712145472375,
+        "avgGain12h": 6.23242643802628,
+        "avgGain24h": 8.628229427646074,
+        "strongBreakouts": 1622,
+        "moderateBreakouts": 2283,
+        "totalSignals": 381074
+      },
+      "score": 65.3060228754849
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 6078,
+        "successfulBreakouts": 3938,
+        "successRate": 64.79104968739718,
+        "avgGain1h": 1.8113606961977642,
+        "avgGain4h": 3.255448529147777,
+        "avgGain12h": 5.038244899978732,
+        "avgGain24h": 7.047944394769206,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 4526,
+        "totalSignals": 381074
+      },
+      "score": 65.11925173787668
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4650,
+        "successfulBreakouts": 2579,
+        "successRate": 55.46236559139784,
+        "avgGain1h": 1.9816816774520511,
+        "avgGain4h": 3.47400387661025,
+        "avgGain12h": 5.3752369356818495,
+        "avgGain24h": 7.549403969247838,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 2870,
+        "totalSignals": 381074
+      },
+      "score": 64.93966815354943
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 5187,
+        "successfulBreakouts": 2932,
+        "successRate": 56.52593021014074,
+        "avgGain1h": 2.0374834617581206,
+        "avgGain4h": 3.6243484260103394,
+        "avgGain12h": 5.537496811005584,
+        "avgGain24h": 7.721990406991948,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 3407,
+        "totalSignals": 381074
+      },
+      "score": 64.91766502451021
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4492,
+        "successfulBreakouts": 2483,
+        "successRate": 55.2760463045414,
+        "avgGain1h": 1.9924676215610102,
+        "avgGain4h": 3.4852540264907406,
+        "avgGain12h": 5.3942127016020045,
+        "avgGain24h": 7.590607353513247,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 2789,
+        "totalSignals": 381074
+      },
+      "score": 64.87400188423041
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4317,
+        "successfulBreakouts": 2217,
+        "successRate": 51.35510771369006,
+        "avgGain1h": 2.270871033668672,
+        "avgGain4h": 4.029610989611349,
+        "avgGain12h": 6.197040666444185,
+        "avgGain24h": 8.578368946776067,
+        "strongBreakouts": 1548,
+        "moderateBreakouts": 2263,
+        "totalSignals": 381074
+      },
+      "score": 64.87042795609557
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 5062,
+        "successfulBreakouts": 2853,
+        "successRate": 56.361122086131964,
+        "avgGain1h": 2.0391773466738403,
+        "avgGain4h": 3.6301198518046416,
+        "avgGain12h": 5.556916803649586,
+        "avgGain24h": 7.744246764677963,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 3359,
+        "totalSignals": 381074
+      },
+      "score": 64.7615081480837
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4249,
+        "successfulBreakouts": 2339,
+        "successRate": 55.0482466462697,
+        "avgGain1h": 2.0004278346930464,
+        "avgGain4h": 3.493139367314472,
+        "avgGain12h": 5.382948789313074,
+        "avgGain24h": 7.584113010950634,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 2697,
+        "totalSignals": 381074
+      },
+      "score": 64.49277297412532
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 3870,
+        "successfulBreakouts": 1878,
+        "successRate": 48.52713178294574,
+        "avgGain1h": 2.1820114127246875,
+        "avgGain4h": 3.7660682192668924,
+        "avgGain12h": 5.78895368369907,
+        "avgGain24h": 8.128464106319687,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 2167,
+        "totalSignals": 381074
+      },
+      "score": 64.46881451754894
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4013,
+        "successfulBreakouts": 1953,
+        "successRate": 48.666832793421385,
+        "avgGain1h": 2.165794633156706,
+        "avgGain4h": 3.745077514244413,
+        "avgGain12h": 5.747946583996889,
+        "avgGain24h": 8.06124281941449,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 2233,
+        "totalSignals": 381074
+      },
+      "score": 64.46038745791695
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 4881,
+        "successfulBreakouts": 2750,
+        "successRate": 56.34091374718295,
+        "avgGain1h": 2.057546959759555,
+        "avgGain4h": 3.6464286177283305,
+        "avgGain12h": 5.585949015055591,
+        "avgGain24h": 7.78207620966591,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 3329,
+        "totalSignals": 381074
+      },
+      "score": 64.45987050988703
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4251,
+        "successfulBreakouts": 2183,
+        "successRate": 51.35262291225594,
+        "avgGain1h": 2.2855712425310424,
+        "avgGain4h": 4.047756052784366,
+        "avgGain12h": 6.22262553276345,
+        "avgGain24h": 8.610430175210338,
+        "strongBreakouts": 1403,
+        "moderateBreakouts": 2304,
+        "totalSignals": 381074
+      },
+      "score": 64.36270932713204
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 3667,
+        "successfulBreakouts": 1771,
+        "successRate": 48.29560949004636,
+        "avgGain1h": 2.1943927174349995,
+        "avgGain4h": 3.782184872211335,
+        "avgGain12h": 5.791538227695161,
+        "avgGain24h": 8.1533479419904,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 2115,
+        "totalSignals": 381074
+      },
+      "score": 64.0896247086331
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 7968,
+        "successfulBreakouts": 5149,
+        "successRate": 64.62098393574297,
+        "avgGain1h": 1.691079475552672,
+        "avgGain4h": 3.0825219981247893,
+        "avgGain12h": 4.908131458958423,
+        "avgGain24h": 6.8254385677843805,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 4722,
+        "totalSignals": 381074
+      },
+      "score": 63.96714219580973
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 7861,
+        "successfulBreakouts": 5061,
+        "successRate": 64.38112199465716,
+        "avgGain1h": 1.689356163527395,
+        "avgGain4h": 3.0740546797375807,
+        "avgGain12h": 4.876560705442118,
+        "avgGain24h": 6.787668789910431,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 4634,
+        "totalSignals": 381074
+      },
+      "score": 63.660568466476505
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 5979,
+        "successfulBreakouts": 3349,
+        "successRate": 56.012711155711656,
+        "avgGain1h": 1.9577376792797734,
+        "avgGain4h": 3.51207058338245,
+        "avgGain12h": 5.450943514502606,
+        "avgGain24h": 7.555232472419228,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 3407,
+        "totalSignals": 381074
+      },
+      "score": 63.469722345741616
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 2
+      },
+      "statistics": {
+        "totalBreakouts": 7672,
+        "successfulBreakouts": 4926,
+        "successRate": 64.2075078206465,
+        "avgGain1h": 1.6987178716880338,
+        "avgGain4h": 3.0857376258320803,
+        "avgGain12h": 4.874753800010365,
+        "avgGain24h": 6.791360424410095,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 4526,
+        "totalSignals": 381074
+      },
+      "score": 63.31160510325189
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 5905,
+        "successfulBreakouts": 3292,
+        "successRate": 55.7493649449619,
+        "avgGain1h": 1.9590026673406014,
+        "avgGain4h": 3.5017985131235005,
+        "avgGain12h": 5.420964183833316,
+        "avgGain24h": 7.517090766814279,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 3359,
+        "totalSignals": 381074
+      },
+      "score": 63.101920737692915
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 5795,
+        "successfulBreakouts": 3224,
+        "successRate": 55.634167385677316,
+        "avgGain1h": 1.971206223490657,
+        "avgGain4h": 3.5162908926796854,
+        "avgGain12h": 5.428503559687816,
+        "avgGain24h": 7.529335777671483,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 3329,
+        "totalSignals": 381074
+      },
+      "score": 62.66868018347067
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 5187,
+        "successfulBreakouts": 2460,
+        "successRate": 47.42625795257374,
+        "avgGain1h": 2.0374834617581206,
+        "avgGain4h": 3.6243484260103394,
+        "avgGain12h": 5.537496811005584,
+        "avgGain24h": 7.721990406991948,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 3407,
+        "totalSignals": 381074
+      },
+      "score": 61.27779612148341
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 5062,
+        "successfulBreakouts": 2391,
+        "successRate": 47.234294745160014,
+        "avgGain1h": 2.0391773466738403,
+        "avgGain4h": 3.6301198518046416,
+        "avgGain12h": 5.556916803649586,
+        "avgGain24h": 7.744246764677963,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 3359,
+        "totalSignals": 381074
+      },
+      "score": 61.11077721169492
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4650,
+        "successfulBreakouts": 2131,
+        "successRate": 45.82795698924731,
+        "avgGain1h": 1.9816816774520511,
+        "avgGain4h": 3.47400387661025,
+        "avgGain12h": 5.3752369356818495,
+        "avgGain24h": 7.549403969247838,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 2870,
+        "totalSignals": 381074
+      },
+      "score": 61.08590471268923
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4492,
+        "successfulBreakouts": 2048,
+        "successRate": 45.59216384683882,
+        "avgGain1h": 1.9924676215610102,
+        "avgGain4h": 3.4852540264907406,
+        "avgGain12h": 5.3942127016020045,
+        "avgGain24h": 7.590607353513247,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 2789,
+        "totalSignals": 381074
+      },
+      "score": 61.000448901149376
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 6502,
+        "successfulBreakouts": 3477,
+        "successRate": 53.475853583512766,
+        "avgGain1h": 1.7988436656244031,
+        "avgGain4h": 3.2492671800609783,
+        "avgGain12h": 5.035238072164376,
+        "avgGain24h": 7.055902615126239,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 4722,
+        "totalSignals": 381074
+      },
+      "score": 60.977385051845836
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 6337,
+        "successfulBreakouts": 3376,
+        "successRate": 53.27442007258956,
+        "avgGain1h": 1.797993802575244,
+        "avgGain4h": 3.2500489970268447,
+        "avgGain12h": 5.036161062052688,
+        "avgGain24h": 7.06334668526134,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 4634,
+        "totalSignals": 381074
+      },
+      "score": 60.81124441991514
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4881,
+        "successfulBreakouts": 2304,
+        "successRate": 47.20344191763983,
+        "avgGain1h": 2.057546959759555,
+        "avgGain4h": 3.6464286177283305,
+        "avgGain12h": 5.585949015055591,
+        "avgGain24h": 7.78207620966591,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 3329,
+        "totalSignals": 381074
+      },
+      "score": 60.804881778069785
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 60,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 4249,
+        "successfulBreakouts": 1921,
+        "successRate": 45.21063779712874,
+        "avgGain1h": 2.0004278346930464,
+        "avgGain4h": 3.493139367314472,
+        "avgGain12h": 5.382948789313074,
+        "avgGain24h": 7.584113010950634,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 2697,
+        "totalSignals": 381074
+      },
+      "score": 60.55772943446893
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 6078,
+        "successfulBreakouts": 3223,
+        "successRate": 53.027311615663045,
+        "avgGain1h": 1.8113606961977642,
+        "avgGain4h": 3.255448529147777,
+        "avgGain12h": 5.038244899978732,
+        "avgGain24h": 7.047944394769206,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 4526,
+        "totalSignals": 381074
+      },
+      "score": 60.41375650918303
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 5979,
+        "successfulBreakouts": 2804,
+        "successRate": 46.89747449406255,
+        "avgGain1h": 1.9577376792797734,
+        "avgGain4h": 3.51207058338245,
+        "avgGain12h": 5.450943514502606,
+        "avgGain24h": 7.555232472419228,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 3407,
+        "totalSignals": 381074
+      },
+      "score": 59.82362768108197
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 5905,
+        "successfulBreakouts": 2753,
+        "successRate": 46.62150719729043,
+        "avgGain1h": 1.9590026673406014,
+        "avgGain4h": 3.5017985131235005,
+        "avgGain12h": 5.420964183833316,
+        "avgGain24h": 7.517090766814279,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 3359,
+        "totalSignals": 381074
+      },
+      "score": 59.45077763862433
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 7968,
+        "successfulBreakouts": 4184,
+        "successRate": 52.51004016064257,
+        "avgGain1h": 1.691079475552672,
+        "avgGain4h": 3.0825219981247893,
+        "avgGain12h": 4.908131458958423,
+        "avgGain24h": 6.8254385677843805,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 4722,
+        "totalSignals": 381074
+      },
+      "score": 59.12276468576957
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 1,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 5795,
+        "successfulBreakouts": 2691,
+        "successRate": 46.43658326143227,
+        "avgGain1h": 1.971206223490657,
+        "avgGain4h": 3.5162908926796854,
+        "avgGain12h": 5.428503559687816,
+        "avgGain24h": 7.529335777671483,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 3329,
+        "totalSignals": 381074
+      },
+      "score": 58.98964653377265
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 7861,
+        "successfulBreakouts": 4105,
+        "successRate": 52.2198193614044,
+        "avgGain1h": 1.689356163527395,
+        "avgGain4h": 3.0740546797375807,
+        "avgGain12h": 4.876560705442118,
+        "avgGain24h": 6.787668789910431,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 4634,
+        "totalSignals": 381074
+      },
+      "score": 58.7960474131754
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 3
+      },
+      "statistics": {
+        "totalBreakouts": 7672,
+        "successfulBreakouts": 3992,
+        "successRate": 52.033368091762256,
+        "avgGain1h": 1.6987178716880338,
+        "avgGain4h": 3.0857376258320803,
+        "avgGain12h": 4.874753800010365,
+        "avgGain24h": 6.791360424410095,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 4526,
+        "totalSignals": 381074
+      },
+      "score": 58.441949211698194
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 6502,
+        "successfulBreakouts": 2861,
+        "successRate": 44.00184558597355,
+        "avgGain1h": 1.7988436656244031,
+        "avgGain4h": 3.2492671800609783,
+        "avgGain12h": 5.035238072164376,
+        "avgGain24h": 7.055902615126239,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 4722,
+        "totalSignals": 381074
+      },
+      "score": 57.18778185283015
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 6337,
+        "successfulBreakouts": 2774,
+        "successRate": 43.77465677765504,
+        "avgGain1h": 1.797993802575244,
+        "avgGain4h": 3.2500489970268447,
+        "avgGain12h": 5.036161062052688,
+        "avgGain24h": 7.06334668526134,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 4634,
+        "totalSignals": 381074
+      },
+      "score": 57.01133910194134
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 50,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 6078,
+        "successfulBreakouts": 2647,
+        "successRate": 43.550510036196115,
+        "avgGain1h": 1.8113606961977642,
+        "avgGain4h": 3.255448529147777,
+        "avgGain12h": 5.038244899978732,
+        "avgGain24h": 7.047944394769206,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 4526,
+        "totalSignals": 381074
+      },
+      "score": 56.623035877396255
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.025,
+          "medium": 0.035,
+          "low": 0.045
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 7968,
+        "successfulBreakouts": 3421,
+        "successRate": 42.93423694779116,
+        "avgGain1h": 1.691079475552672,
+        "avgGain4h": 3.0825219981247893,
+        "avgGain12h": 4.908131458958423,
+        "avgGain24h": 6.8254385677843805,
+        "strongBreakouts": 1780,
+        "moderateBreakouts": 4722,
+        "totalSignals": 381074
+      },
+      "score": 55.292443400629004
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.02,
+          "medium": 0.03,
+          "low": 0.04
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 7861,
+        "successfulBreakouts": 3352,
+        "successRate": 42.64088538353899,
+        "avgGain1h": 1.689356163527395,
+        "avgGain4h": 3.0740546797375807,
+        "avgGain12h": 4.876560705442118,
+        "avgGain24h": 6.787668789910431,
+        "strongBreakouts": 1703,
+        "moderateBreakouts": 4634,
+        "totalSignals": 381074
+      },
+      "score": 54.964473822029234
+    },
+    {
+      "params": {
+        "minVolumeRatio": 1.2,
+        "minPriceChange": 0.5,
+        "minConfidenceScore": 40,
+        "consolidationThresholds": {
+          "high": 0.015,
+          "medium": 0.025,
+          "low": 0.035
+        },
+        "successThreshold": 4
+      },
+      "statistics": {
+        "totalBreakouts": 7672,
+        "successfulBreakouts": 3252,
+        "successRate": 42.38790406673618,
+        "avgGain1h": 1.6987178716880338,
+        "avgGain4h": 3.0857376258320803,
+        "avgGain12h": 4.874753800010365,
+        "avgGain24h": 6.791360424410095,
+        "strongBreakouts": 1552,
+        "moderateBreakouts": 4526,
+        "totalSignals": 381074
+      },
+      "score": 54.583763601687764
+    }
+  ]
+}
