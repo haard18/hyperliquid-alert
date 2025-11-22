@@ -165,32 +165,41 @@ export async function evaluateBreakoutOutcomes(): Promise<void> {
       let peak4h = breakoutPrice;
       let peak12h = breakoutPrice;
       let peak24h = breakoutPrice;
+      const isShort = signal.direction === "short";
       
       for (let i = 0; i < candlesAfterBreakout.length; i++) {
         const candle = candlesAfterBreakout[i];
         if (!candle) continue;
         
         const hoursAfter = (candle.timestamp - signal.timestamp) / (60 * 60 * 1000);
+        const comparisonValue = isShort ? candle.low : candle.high;
         
         if (hoursAfter <= 1) {
-          peak1h = Math.max(peak1h, candle.high);
+          peak1h = isShort ? Math.min(peak1h, comparisonValue) : Math.max(peak1h, comparisonValue);
         }
         if (hoursAfter <= 4) {
-          peak4h = Math.max(peak4h, candle.high);
+          peak4h = isShort ? Math.min(peak4h, comparisonValue) : Math.max(peak4h, comparisonValue);
         }
         if (hoursAfter <= 12) {
-          peak12h = Math.max(peak12h, candle.high);
+          peak12h = isShort ? Math.min(peak12h, comparisonValue) : Math.max(peak12h, comparisonValue);
         }
         if (hoursAfter <= 24) {
-          peak24h = Math.max(peak24h, candle.high);
+          peak24h = isShort ? Math.min(peak24h, comparisonValue) : Math.max(peak24h, comparisonValue);
         }
       }
       
-      // Calculate gains
-      const gain1h = ((peak1h - breakoutPrice) / breakoutPrice) * 100;
-      const gain4h = ((peak4h - breakoutPrice) / breakoutPrice) * 100;
-      const gain12h = ((peak12h - breakoutPrice) / breakoutPrice) * 100;
-      const gain24h = ((peak24h - breakoutPrice) / breakoutPrice) * 100;
+      const gain1h = isShort
+        ? ((breakoutPrice - peak1h) / breakoutPrice) * 100
+        : ((peak1h - breakoutPrice) / breakoutPrice) * 100;
+      const gain4h = isShort
+        ? ((breakoutPrice - peak4h) / breakoutPrice) * 100
+        : ((peak4h - breakoutPrice) / breakoutPrice) * 100;
+      const gain12h = isShort
+        ? ((breakoutPrice - peak12h) / breakoutPrice) * 100
+        : ((peak12h - breakoutPrice) / breakoutPrice) * 100;
+      const gain24h = isShort
+        ? ((breakoutPrice - peak24h) / breakoutPrice) * 100
+        : ((peak24h - breakoutPrice) / breakoutPrice) * 100;
       
       const outcome: BreakoutOutcome = {
         signal,
@@ -213,9 +222,9 @@ export async function evaluateBreakoutOutcomes(): Promise<void> {
       
       info(
         "BreakoutHistory",
-        `Evaluated ${signal.coin} breakout: 1h: +${gain1h.toFixed(1)}%, ` +
-        `4h: +${gain4h.toFixed(1)}%, 12h: +${gain12h.toFixed(1)}%, 24h: +${gain24h.toFixed(1)}% | ` +
-        `Success: ${outcome.outcome.success ? "YES" : "NO"}`
+        `Evaluated ${signal.coin} ${signal.direction.toUpperCase()} breakout: 1h: ${gain1h >= 0 ? "+" : ""}${gain1h.toFixed(1)}%, ` +
+        `4h: ${gain4h >= 0 ? "+" : ""}${gain4h.toFixed(1)}%, 12h: ${gain12h >= 0 ? "+" : ""}${gain12h.toFixed(1)}%, ` +
+        `24h: ${gain24h >= 0 ? "+" : ""}${gain24h.toFixed(1)}% | Success: ${outcome.outcome.success ? "YES" : "NO"}`
       );
     }
     

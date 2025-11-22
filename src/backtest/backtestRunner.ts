@@ -28,10 +28,13 @@ function printReport(stats: ReturnType<typeof calculateStatistics>): void {
   // Summary
   console.log("\n📊 SUMMARY");
   console.log("─".repeat(80));
+  const totalForPct = Math.max(stats.totalBreakouts, 1);
   console.log(`  Breakouts Found:     ${stats.totalBreakouts}`);
   console.log(`  Successful:          ${stats.successfulBreakouts} (${stats.successRate.toFixed(1)}%)`);
-  console.log(`  Strong Breakouts:    ${stats.strongBreakouts} (${((stats.strongBreakouts / stats.totalBreakouts) * 100).toFixed(1)}%)`);
-  console.log(`  Moderate Breakouts:  ${stats.moderateBreakouts} (${((stats.moderateBreakouts / stats.totalBreakouts) * 100).toFixed(1)}%)`);
+  console.log(`  Strong Breakouts:    ${stats.strongBreakouts} (${((stats.strongBreakouts / totalForPct) * 100).toFixed(1)}%)`);
+  console.log(`  Moderate Breakouts:  ${stats.moderateBreakouts} (${((stats.moderateBreakouts / totalForPct) * 100).toFixed(1)}%)`);
+  console.log(`  Long Breakouts:      ${stats.longBreakouts}`);
+  console.log(`  Short Breakouts:     ${stats.shortBreakouts}`);
   
   // Performance
   console.log("\n📈 AVERAGE PERFORMANCE");
@@ -165,7 +168,13 @@ async function runBacktest(coins: string[], months: number = 3): Promise<void> {
         consolidationPeriod: result.breakout.consolidationPeriod,
         confidenceScore: result.breakout.confidenceScore,
         breakoutType: result.breakout.breakoutType,
-        resistanceLevel: Number(result.breakout.resistanceLevel.toFixed(4)),
+        direction: result.breakout.direction,
+        resistanceLevel: result.breakout.resistanceLevel !== undefined
+          ? Number(result.breakout.resistanceLevel.toFixed(4))
+          : undefined,
+        supportLevel: result.breakout.supportLevel !== undefined
+          ? Number(result.breakout.supportLevel.toFixed(4))
+          : undefined,
         outcome: {
           gain1h: Number(result.outcome.gain1h.toFixed(2)),
           gain4h: Number(result.outcome.gain4h.toFixed(2)),
@@ -195,6 +204,8 @@ async function runBacktest(coins: string[], months: number = 3): Promise<void> {
     avgGain24h: stats.avgGain24h,
     strongBreakouts: stats.strongBreakouts,
     moderateBreakouts: stats.moderateBreakouts,
+    longBreakouts: stats.longBreakouts,
+    shortBreakouts: stats.shortBreakouts,
     months,
     coins: coins.length,
     topPerformers: stats.topPerformers,

@@ -31,10 +31,18 @@ function printResults(
   
   console.log("\n📈 PERFORMANCE STATISTICS");
   console.log("─".repeat(80));
-  console.log(`  Total Breakouts:     ${results.statistics.totalBreakouts}`);
+  const strongPct = results.statistics.totalBreakouts > 0
+    ? (results.statistics.strongBreakouts / results.statistics.totalBreakouts) * 100
+    : 0;
+  const moderatePct = results.statistics.totalBreakouts > 0
+    ? (results.statistics.moderateBreakouts / results.statistics.totalBreakouts) * 100
+    : 0;
+  console.log(`  Total Breakouts:      ${results.statistics.totalBreakouts}`);
   console.log(`  Successful (3%+):     ${results.statistics.successfulBreakouts} (${results.statistics.successRate.toFixed(1)}%)`);
-  console.log(`  Strong Breakouts:     ${results.statistics.strongBreakouts} (${((results.statistics.strongBreakouts / results.statistics.totalBreakouts) * 100).toFixed(1)}%)`);
-  console.log(`  Moderate Breakouts:   ${results.statistics.moderateBreakouts} (${((results.statistics.moderateBreakouts / results.statistics.totalBreakouts) * 100).toFixed(1)}%)`);
+  console.log(`  Strong Breakouts:     ${results.statistics.strongBreakouts} (${strongPct.toFixed(1)}%)`);
+  console.log(`  Moderate Breakouts:   ${results.statistics.moderateBreakouts} (${moderatePct.toFixed(1)}%)`);
+  console.log(`  Long Breakouts:       ${results.statistics.longBreakouts}`);
+  console.log(`  Short Breakouts:      ${results.statistics.shortBreakouts}`);
   
   console.log("\n💰 AVERAGE GAINS BY HORIZON");
   console.log("─".repeat(80));
@@ -101,13 +109,13 @@ function printResults(
     assessments.push("⚠️  Moderate average gain (<3%)");
   }
   
-  const strongPct = results.statistics.totalBreakouts > 0
+  const strongShare = results.statistics.totalBreakouts > 0
     ? (results.statistics.strongBreakouts / results.statistics.totalBreakouts) * 100
     : 0;
-  if (strongPct >= 25) {
-    assessments.push(`✅ Good quality (${strongPct.toFixed(0)}% strong)`);
+  if (strongShare >= 25) {
+    assessments.push(`✅ Good quality (${strongShare.toFixed(0)}% strong)`);
   } else {
-    assessments.push(`⚠️  Lower quality (${strongPct.toFixed(0)}% strong)`);
+    assessments.push(`⚠️  Lower quality (${strongShare.toFixed(0)}% strong)`);
   }
   
   assessments.forEach(a => console.log(`  ${a}`));
@@ -171,7 +179,13 @@ async function main(): Promise<void> {
           consolidationPeriod: b.signal.consolidationPeriod,
           confidenceScore: b.signal.confidenceScore,
           breakoutType: b.signal.breakoutType,
-          resistanceLevel: Number(b.signal.resistanceLevel.toFixed(4)),
+          direction: b.signal.direction,
+          ...(b.signal.resistanceLevel !== undefined
+            ? { resistanceLevel: Number(b.signal.resistanceLevel.toFixed(4)) }
+            : {}),
+          ...(b.signal.supportLevel !== undefined
+            ? { supportLevel: Number(b.signal.supportLevel.toFixed(4)) }
+            : {}),
           outcome: {
             gain1h: Number(b.outcome.gain1h.toFixed(2)),
             gain4h: Number(b.outcome.gain4h.toFixed(2)),
@@ -197,6 +211,8 @@ async function main(): Promise<void> {
         avgGain24h: results.statistics.avgGain24h,
         strongBreakouts: results.statistics.strongBreakouts,
         moderateBreakouts: results.statistics.moderateBreakouts,
+        longBreakouts: results.statistics.longBreakouts,
+        shortBreakouts: results.statistics.shortBreakouts,
         months: months,
         coins: coins.length,
         topPerformers: topPerformers.map(b => ({

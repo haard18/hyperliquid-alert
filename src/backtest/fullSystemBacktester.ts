@@ -11,6 +11,8 @@ import mockRedis from "./mockRedis.js";
 import type { BreakoutSignal } from "../breakout/breakoutDetector.js";
 import type { ProcessedCandle } from "../stream/candleStreamer.js";
 import { info } from "../utils/logger.js";
+import { calculateConfidenceScore } from "../breakout/confidenceModel.js";
+import type { AssetClass } from "../assets/assetClassifier.js";
 
 interface BacktestBreakout {
   signal: BreakoutSignal;
@@ -47,8 +49,15 @@ interface BacktestResults {
     strongBreakouts: number;
     moderateBreakouts: number;
     moderateBreakoutsCount: number;
+    longBreakouts: number;
+    shortBreakouts: number;
   };
 }
+
+const DEFAULT_MIN_VOLUME_RATIO = 1.5;
+const DEFAULT_MIN_PRICE_CHANGE = 1;
+const DEFAULT_MIN_CONFIDENCE_SCORE = 50;
+const DEFAULT_SUCCESS_THRESHOLD = 3;
 
 /**
  * Convert historical candle to processed candle format
@@ -89,28 +98,39 @@ function evaluateBreakoutOutcome(
   let peak4h = breakoutPrice;
   let peak12h = breakoutPrice;
   let peak24h = breakoutPrice;
+  const isShort = signal.direction === "short";
   
   for (const candle of candlesAfter) {
     const hoursAfter = (candle.timestamp - signal.timestamp) / (60 * 60 * 1000);
     
+    const comparisonValue = isShort ? candle.low : candle.high;
+
     if (hoursAfter <= 1) {
-      peak1h = Math.max(peak1h, candle.high);
+      peak1h = isShort ? Math.min(peak1h, comparisonValue) : Math.max(peak1h, comparisonValue);
     }
     if (hoursAfter <= 4) {
-      peak4h = Math.max(peak4h, candle.high);
+      peak4h = isShort ? Math.min(peak4h, comparisonValue) : Math.max(peak4h, comparisonValue);
     }
     if (hoursAfter <= 12) {
-      peak12h = Math.max(peak12h, candle.high);
+      peak12h = isShort ? Math.min(peak12h, comparisonValue) : Math.max(peak12h, comparisonValue);
     }
     if (hoursAfter <= 24) {
-      peak24h = Math.max(peak24h, candle.high);
+      peak24h = isShort ? Math.min(peak24h, comparisonValue) : Math.max(peak24h, comparisonValue);
     }
   }
   
-  const gain1h = ((peak1h - breakoutPrice) / breakoutPrice) * 100;
-  const gain4h = ((peak4h - breakoutPrice) / breakoutPrice) * 100;
-  const gain12h = ((peak12h - breakoutPrice) / breakoutPrice) * 100;
-  const gain24h = ((peak24h - breakoutPrice) / breakoutPrice) * 100;
+  const gain1h = isShort
+    ? ((breakoutPrice - peak1h) / breakoutPrice) * 100
+    : ((peak1h - breakoutPrice) / breakoutPrice) * 100;
+  const gain4h = isShort
+    ? ((breakoutPrice - peak4h) / breakoutPrice) * 100
+    : ((peak4h - breakoutPrice) / breakoutPrice) * 100;
+  const gain12h = isShort
+    ? ((breakoutPrice - peak12h) / breakoutPrice) * 100
+    : ((peak12h - breakoutPrice) / breakoutPrice) * 100;
+  const gain24h = isShort
+    ? ((breakoutPrice - peak24h) / breakoutPrice) * 100
+    : ((peak24h - breakoutPrice) / breakoutPrice) * 100;
   
   return {
     peak1h,
@@ -121,7 +141,7 @@ function evaluateBreakoutOutcome(
     gain4h,
     gain12h,
     gain24h,
-    success: gain24h >= 3,
+    success: gain24h >= DEFAULT_SUCCESS_THRESHOLD,
   };
 }
 
@@ -178,6 +198,8 @@ export async function runFullSystemBacktest(
   // Track breakouts detected during simulation
   const detectedBreakouts: BreakoutSignal[] = [];
   const allBreakouts: BacktestBreakout[] = [];
+  let longBreakouts = 0;
+  let shortBreakouts = 0;
 
   // Process hour by hour (simulating real-time)
   let processedHours = 0;
@@ -219,17 +241,30 @@ export async function runFullSystemBacktest(
       // Run detection for all active coins (matching live system behavior)
       for (const coin of activeCoins) {
         try {
-          // Temporarily replace the real candleStreamer with our mock
-          // We'll need to patch the breakoutDetector to use our mock
-          const signal = await detectBreakoutForCoinWithMock(coin);
+          const [longSignal, shortSignal] = await Promise.all([
+            detectBreakoutForCoinWithMock(coin),
+            detectShortBreakoutForCoinWithMock(coin),
+          ]);
+
+          const signalsForCoin = [longSignal, shortSignal].filter(
+            (s): s is BreakoutSignal => s !== null
+          );
           
-          if (signal) {
+          for (const signal of signalsForCoin) {
             detectedBreakouts.push(signal);
+            if (signal.direction === "short") {
+              shortBreakouts++;
+            } else {
+              longBreakouts++;
+            }
             
-            // Store signal (using mock Redis)
             await storeBreakoutSignalWithMock(signal);
             
-            info("Backtester", `🚀 BREAKOUT: ${coin} @ ${new Date(signal.timestamp).toISOString()} | Conf: ${signal.confidenceScore}/100`);
+            info(
+              "Backtester",
+              `🚀 BREAKOUT (${signal.direction.toUpperCase()}): ${coin} @ ${new Date(signal.timestamp).toISOString()} | ` +
+              `Conf: ${signal.confidenceScore}/100 | Change: ${signal.direction === "short" ? "-" : "+"}${signal.priceChange.toFixed(1)}%`
+            );
           }
         } catch (err) {
           // Silently continue - some coins may not have enough data
@@ -305,6 +340,8 @@ export async function runFullSystemBacktest(
       strongBreakouts,
       moderateBreakouts: moderateBreakoutsCount,
       moderateBreakoutsCount,
+      longBreakouts,
+      shortBreakouts,
     },
   };
 
@@ -330,6 +367,21 @@ async function detectBreakoutForCoinWithMock(coin: string): Promise<BreakoutSign
   return await detectBreakoutLogic(coin, candles, latestCandle);
 }
 
+async function detectShortBreakoutForCoinWithMock(coin: string): Promise<BreakoutSignal | null> {
+  const candles = await mockCandleStreamer.getCandles(coin, 60);
+  
+  if (candles.length < 24) {
+    return null;
+  }
+
+  const latestCandle = candles[0];
+  if (!latestCandle) {
+    return null;
+  }
+
+  return await detectShortBreakoutLogic(coin, candles, latestCandle);
+}
+
 /**
  * Breakout detection logic (exact copy from breakoutDetector.ts)
  */
@@ -341,6 +393,17 @@ function calculateResistanceLevel(candles: ProcessedCandle[]): number {
   const highs = relevantCandles.map(c => c.high);
   const sorted = highs.sort((a, b) => a - b);
   const index = Math.floor(sorted.length * 0.95);
+  return sorted[index] || 0;
+}
+
+function calculateSupportLevel(candles: ProcessedCandle[]): number {
+  if (candles.length < 20) {
+    return 0;
+  }
+  const relevantCandles = candles.slice(2, 22);
+  const lows = relevantCandles.map(c => c.low);
+  const sorted = lows.sort((a, b) => a - b);
+  const index = Math.max(0, Math.floor(sorted.length * 0.05));
   return sorted[index] || 0;
 }
 
@@ -394,42 +457,29 @@ function checkSustainedMomentum(candles: ProcessedCandle[]): boolean {
   return greenCandles >= 2;
 }
 
-function calculateConfidenceScore(metrics: {
-  volumeRatio: number;
-  priceChange: number;
-  consolidationPeriod: number;
-  sustainedMomentum: boolean;
-}): number {
-  let score = 0;
-  if (metrics.volumeRatio >= 5) {
-    score += 40;
-  } else if (metrics.volumeRatio >= 3) {
-    score += 30;
-  } else if (metrics.volumeRatio >= 2) {
-    score += 20;
-  } else if (metrics.volumeRatio >= 1.5) {
-    score += 10;
+function checkSustainedBearMomentum(candles: ProcessedCandle[]): boolean {
+  if (candles.length < 3) {
+    return false;
   }
-  if (metrics.priceChange >= 5) {
-    score += 30;
-  } else if (metrics.priceChange >= 3) {
-    score += 20;
-  } else if (metrics.priceChange >= 2) {
-    score += 15;
-  } else if (metrics.priceChange >= 1) {
-    score += 10;
+  const recent = candles.slice(0, 3);
+  let redCandles = 0;
+  for (const candle of recent) {
+    if (candle.close < candle.open) {
+      redCandles++;
+    }
   }
-  if (metrics.consolidationPeriod >= 12) {
-    score += 20;
-  } else if (metrics.consolidationPeriod >= 8) {
-    score += 15;
-  } else if (metrics.consolidationPeriod >= 4) {
-    score += 10;
+  return redCandles >= 2;
+}
+
+
+function determineBreakoutType(confidenceScore: number): "strong" | "moderate" | "weak" {
+  if (confidenceScore >= 75) {
+    return "strong";
   }
-  if (metrics.sustainedMomentum) {
-    score += 10;
+  if (confidenceScore >= 50) {
+    return "moderate";
   }
-  return Math.min(score, 100);
+  return "weak";
 }
 
 /**
@@ -456,40 +506,111 @@ async function detectBreakoutLogic(
   const volumeRatio = avgVolume > 0 ? latestCandle.volume / avgVolume : 0;
   const priceChange = ((latestCandle.close - resistanceLevel) / resistanceLevel) * 100;
 
-  if (volumeRatio < 1.5 || priceChange < 1) {
+  if (volumeRatio < DEFAULT_MIN_VOLUME_RATIO || priceChange < DEFAULT_MIN_PRICE_CHANGE) {
     return null;
   }
 
-  const confidenceScore = calculateConfidenceScore({
-    volumeRatio,
-    priceChange,
-    consolidationPeriod,
-    sustainedMomentum,
-  });
+  const assetClass: AssetClass = "crypto";
+  const provider: BreakoutSignal["provider"] = "hyperliquid";
 
-  let breakoutType: "strong" | "moderate" | "weak";
-  if (confidenceScore >= 75) {
-    breakoutType = "strong";
-  } else if (confidenceScore >= 50) {
-    breakoutType = "moderate";
-  } else {
-    breakoutType = "weak";
-  }
+  const confidenceScore = calculateConfidenceScore(
+    {
+      volumeRatio,
+      priceChange,
+      consolidationPeriod,
+      sustainedMomentum,
+    },
+    assetClass
+  );
 
-  if (confidenceScore < 50) {
+  if (confidenceScore < DEFAULT_MIN_CONFIDENCE_SCORE) {
     return null;
   }
 
   return {
     coin,
+    symbol: coin,
+    class: assetClass,
     timestamp: latestCandle.timestamp,
     price: latestCandle.close,
     volumeRatio,
     priceChange,
     consolidationPeriod,
+    consolidationHours: consolidationPeriod,
     confidenceScore,
+    confidence: confidenceScore,
     resistanceLevel,
-    breakoutType,
+    direction: "long",
+    breakoutType: determineBreakoutType(confidenceScore),
+    provider,
+  };
+}
+
+async function detectShortBreakoutLogic(
+  coin: string,
+  candles: ProcessedCandle[],
+  latestCandle: ProcessedCandle
+): Promise<BreakoutSignal | null> {
+  if (candles.length < 24) {
+    return null;
+  }
+
+  const supportLevel = calculateSupportLevel(candles);
+  if (supportLevel <= 0) {
+    return null;
+  }
+
+  if (latestCandle.close >= supportLevel) {
+    return null;
+  }
+
+  const avgVolume = calculateAverageVolume(candles, 24);
+  const consolidationPeriod = detectConsolidation(candles);
+  const sustainedMomentum = checkSustainedBearMomentum(candles);
+  const volumeRatio = avgVolume > 0 ? latestCandle.volume / avgVolume : 0;
+  const priceChange = ((supportLevel - latestCandle.close) / supportLevel) * 100;
+
+  if (priceChange <= 0) {
+    return null;
+  }
+
+  if (volumeRatio < DEFAULT_MIN_VOLUME_RATIO || priceChange < DEFAULT_MIN_PRICE_CHANGE) {
+    return null;
+  }
+
+  const assetClass: AssetClass = "crypto";
+  const provider: BreakoutSignal["provider"] = "hyperliquid";
+
+  const confidenceScore = calculateConfidenceScore(
+    {
+      volumeRatio,
+      priceChange,
+      consolidationPeriod,
+      sustainedMomentum,
+    },
+    assetClass
+  );
+
+  if (confidenceScore < DEFAULT_MIN_CONFIDENCE_SCORE) {
+    return null;
+  }
+
+  return {
+    coin,
+    symbol: coin,
+    class: assetClass,
+    timestamp: latestCandle.timestamp,
+    price: latestCandle.close,
+    volumeRatio,
+    priceChange,
+    consolidationPeriod,
+    consolidationHours: consolidationPeriod,
+    confidenceScore,
+    confidence: confidenceScore,
+    supportLevel,
+    direction: "short",
+    breakoutType: determineBreakoutType(confidenceScore),
+    provider,
   };
 }
 

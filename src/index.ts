@@ -7,8 +7,68 @@ import { storeBreakoutSignal, run as evaluateBreakoutHistory, printBreakoutStats
 import redis from "./utils/redisClient.js";
 import { info, warn, error } from "./utils/logger.js";
 import { initTelegram, isTelegramEnabled } from "./utils/telegramNotifier.js";
+import {
+  ingestMultiAssetCandles,
+  FOREX_SYMBOLS,
+  METAL_SYMBOLS,
+  OIL_SYMBOLS,
+  US_STOCK_SYMBOLS,
+  IN_STOCK_SYMBOLS,
+  MULTI_ASSET_SYMBOLS,
+} from "./ingestion/multiAssetIngestion.js";
 
 let activatedCoins: string[] = [];
+
+const POLL_GROUPS = {
+  forex: 5 * 60 * 1000,
+  metals: 6 * 60 * 1000,
+  oil: 3 * 60 * 1000,
+  usStocksInHours: 2 * 60 * 1000,
+  usStocksOffHours: 15 * 60 * 1000,
+  inStocksInHours: 2 * 60 * 1000,
+  inStocksOffHours: 15 * 60 * 1000,
+} as const;
+
+type PollGroupName =
+  | "forex"
+  | "metals"
+  | "oil"
+  | "usStocks"
+  | "inStocks";
+
+const groupTimers = new Map<PollGroupName, NodeJS.Timeout>();
+const runningGroups = new Set<PollGroupName>();
+
+function isWeekday(date: Date): boolean {
+  const day = date.getUTCDay();
+  return day !== 0 && day !== 6;
+}
+
+function minutesSinceMidnightUTC(date: Date): number {
+  return date.getUTCHours() * 60 + date.getUTCMinutes();
+}
+
+function isUSMarketOpen(date: Date = new Date()): boolean {
+  if (!isWeekday(date)) {
+    return false;
+  }
+
+  const minutes = minutesSinceMidnightUTC(date);
+  const open = 13 * 60 + 30; // 13:30 UTC (09:30 ET)
+  const close = 20 * 60; // 20:00 UTC (16:00 ET)
+  return minutes >= open && minutes <= close;
+}
+
+function isIndianMarketOpen(date: Date = new Date()): boolean {
+  if (!isWeekday(date)) {
+    return false;
+  }
+
+  const minutes = minutesSinceMidnightUTC(date);
+  const open = 3 * 60 + 45; // 09:15 IST
+  const close = 10 * 60 + 15; // 15:45 IST
+  return minutes >= open && minutes <= close;
+}
 
 /**
  * Initialize WebSocket and subscribe to all discovered coins
@@ -95,6 +155,114 @@ async function runBreakoutDetection(): Promise<void> {
   }
 }
 
+async function runMultiAssetDetectionCycle(symbols?: readonly string[]): Promise<void> {
+  try {
+    const symbolList =
+      symbols && symbols.length > 0
+        ? Array.from(new Set(symbols))
+        : Array.from(MULTI_ASSET_SYMBOLS);
+    info(
+      "Main",
+      `Running multi-asset ingestion cycle for ${symbolList.length} symbols`
+    );
+    await ingestMultiAssetCandles("5d", symbolList);
+
+    info(
+      "Main",
+      `Running multi-asset breakout detection for ${symbolList.length} symbols`
+    );
+    const signals = await detectBreakouts([], {
+      skipCrypto: true,
+      includeMultiAsset: true,
+      multiAssetSymbols: symbolList,
+    });
+
+    for (const signal of signals) {
+      await storeBreakoutSignal(signal);
+    }
+
+    info("Main", `Multi-asset detection completed with ${signals.length} signals`);
+  } catch (err) {
+    error("Main", "Error in multi-asset detection cycle", err);
+  }
+}
+
+async function runGroupCycle(
+  group: PollGroupName,
+  symbols: readonly string[]
+): Promise<void> {
+  if (runningGroups.has(group)) {
+    info("Main", `[${group}] Poll skipped (previous cycle still running)`);
+    return;
+  }
+
+  runningGroups.add(group);
+  try {
+    info("Main", `[${group}] Polling ${symbols.length} symbols`);
+    await runMultiAssetDetectionCycle(symbols);
+  } finally {
+    runningGroups.delete(group);
+  }
+}
+
+function clearGroupTimer(group: PollGroupName): void {
+  const timer = groupTimers.get(group);
+  if (timer) {
+    clearTimeout(timer);
+    groupTimers.delete(group);
+  }
+}
+
+function scheduleGroupPolling(
+  group: PollGroupName,
+  symbols: readonly string[],
+  intervalProvider: () => number
+): void {
+  clearGroupTimer(group);
+
+  const scheduleNext = () => {
+    const requestedInterval = intervalProvider();
+    const interval =
+      Number.isFinite(requestedInterval) && requestedInterval > 0
+        ? requestedInterval
+        : 60 * 1000;
+    const timer = setTimeout(async () => {
+      try {
+        await runGroupCycle(group, symbols);
+      } catch (err) {
+        error("Main", `[${group}] Polling error`, err);
+      } finally {
+        scheduleNext();
+      }
+    }, interval);
+
+    groupTimers.set(group, timer);
+  };
+
+  scheduleNext();
+}
+
+function startMultiAssetPolling(): void {
+  scheduleGroupPolling("forex", FOREX_SYMBOLS, () => POLL_GROUPS.forex);
+  scheduleGroupPolling("metals", METAL_SYMBOLS, () => POLL_GROUPS.metals);
+  scheduleGroupPolling("oil", OIL_SYMBOLS, () => POLL_GROUPS.oil);
+  scheduleGroupPolling("usStocks", US_STOCK_SYMBOLS, () =>
+    isUSMarketOpen() ? POLL_GROUPS.usStocksInHours : POLL_GROUPS.usStocksOffHours
+  );
+  scheduleGroupPolling("inStocks", IN_STOCK_SYMBOLS, () =>
+    isIndianMarketOpen() ? POLL_GROUPS.inStocksInHours : POLL_GROUPS.inStocksOffHours
+  );
+
+  info("Main", "Multi-asset group polling initialized");
+}
+
+function clearAllGroupPolling(): void {
+  for (const group of Array.from(groupTimers.keys())) {
+    clearGroupTimer(group);
+  }
+  runningGroups.clear();
+}
+
 /**
  * Evaluate historical breakout outcomes
  */
@@ -130,6 +298,10 @@ async function start(): Promise<void> {
     // Initial setup
     await initializeStreaming();
     await discoverAndSubscribe();
+
+    info("Main", "Running immediate multi-asset detection after startup...");
+    await runMultiAssetDetectionCycle();
+    startMultiAssetPolling();
     
     info("Main", `Monitoring ${activatedCoins.length} coins for breakouts`);
     
@@ -225,7 +397,9 @@ async function start(): Promise<void> {
  */
 async function shutdown(): Promise<void> {
   console.log("\nShutting down Hyperliquid Breakout Detector...");
-  
+
+  clearAllGroupPolling();
+
   candleStreamer.close();
   await redis.quit();
   console.log("✓ Shutdown complete");

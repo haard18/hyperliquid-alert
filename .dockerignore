@@ -1,41 +1,51 @@
-# Node modules
-node_modules
-npm-debug.log
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Build output
-dist
+dist/
 
-# Environment files
+# Logs
+logs/
+*.log
+
+# Environment
 .env
 .env.local
 .env.*.local
 
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
 # Git
-.git
+.git/
 .gitignore
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
 
 # Documentation
 *.md
 !README.md
 
-# Logs
-logs/*.jsonl
-*.log
-
 # Test files
-**/*.test.ts
-**/*.spec.ts
-
-# IDE
-.vscode
-.idea
-*.swp
-*.swo
-*~
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Backtest results
+test_results.txt
 backtest_results.json
+grid_search_results.json
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+
+# CI/CD
+.github/
+.gitlab-ci.yml

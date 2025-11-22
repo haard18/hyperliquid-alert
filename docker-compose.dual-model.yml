@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: hyperliquid-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Model-1: Daily Breakout Detector (1h candles)
+  model1-breakout:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hyperliquid-model1
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - NODE_ENV=production
+    volumes:
+      - ./logs:/app/logs
+    command: ["node", "dist/index.js"]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Model-2: Intraday Detector (5m/15m/1h signals)
+  model2-intraday:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hyperliquid-model2
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - NODE_ENV=production
+      - BACKTEST_DAYS=30
+      - BACKTEST_SYMBOLS=BTC,ETH,SOL,ARB
+    volumes:
+      - ./logs:/app/logs
+    command: ["node", "dist/intradayMain.js", "start"]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  redis-data:
+    driver: local
+

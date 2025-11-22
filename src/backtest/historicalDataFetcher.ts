@@ -6,6 +6,8 @@
 
 import axios from "axios";
 import { info, warn, error as logError } from "../utils/logger.js";
+import type { AssetClass } from "../assets/assetClassifier.js";
+import type { DataProvider } from "../ingestion/multiAssetIngestion.js";
 
 const HYPERLIQUID_API_URL = "https://api.hyperliquid.xyz/info";
 
@@ -20,6 +22,8 @@ export interface HistoricalCandle {
   low: number;
   volume: number;
   numTrades: number;
+  assetClass?: AssetClass;
+  provider?: DataProvider | "hyperliquid";
 }
 
 /**
@@ -84,6 +88,8 @@ export async function fetchHistoricalCandles(
         low: parseFloat(c.l),
         volume: parseFloat(c.v),
         numTrades: c.n || 0,
+        assetClass: "crypto",
+        provider: "hyperliquid",
       }));
 
       return candles;
